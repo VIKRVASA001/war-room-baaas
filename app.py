@@ -11,7 +11,7 @@ st.markdown("""
     .main { background-color: #0e1117; }
     .stMetric { background-color: #1e2130; padding: 15px; border-radius: 10px; border-left: 5px solid #ff4b4b; }
     </style>
-    """, unsafe_allow_dict=True)
+    """, unsafe_allow_html=True)
 
 st.title("🛡️ War Room BAaaS")
 st.subheader("EPC Operations & Profitability Command Center")
