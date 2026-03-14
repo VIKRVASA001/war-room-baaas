@@ -95,21 +95,51 @@ else:
         st.markdown("---")
         
         # THE WATERFALL CHART: Ultimate P&L Visualization
-        st.subheader("Financial Waterfall: Revenue to Net Margin")
+        st.markdown("### 🌊 Financial Waterfall: Revenue to Net Margin")
         if total_billed > 0:
+            
+            # 1. Dynamic Logic for Profit vs Loss
+            is_profit = gross_profit >= 0
+            total_color = "#2ecc71" if is_profit else "#e74c3c" # Green if profit, Red if loss
+            final_label = "Gross Profit" if is_profit else "Net Loss"
+            
             fig_waterfall = go.Figure(go.Waterfall(
-                name="20", orientation="v",
+                name="P&L", orientation="v",
                 measure=["relative", "relative", "relative", "relative", "total"],
-                x=["Billed Revenue", "Material Cost", "Machinery Cost", "Manpower Cost", "Gross Profit"],
+                x=["Billed Revenue", "Material Cost", "Machinery Cost", "Manpower Cost", final_label],
                 textposition="outside",
-                text=[f"₹{total_billed:,.0f}", f"-₹{total_mat_cost:,.0f}", f"-₹{total_mac_cost:,.0f}", f"-₹{total_man_cost:,.0f}", f"₹{gross_profit:,.0f}"],
+                # Adding HTML bold tags and proper formatting
+                text=[f"<b>₹{total_billed:,.0f}</b>", 
+                      f"<b>-₹{total_mat_cost:,.0f}</b>", 
+                      f"<b>-₹{total_mac_cost:,.0f}</b>", 
+                      f"<b>-₹{total_man_cost:,.0f}</b>", 
+                      f"<b>₹{gross_profit:,.0f}</b>"],
                 y=[total_billed, -total_mat_cost, -total_mac_cost, -total_man_cost, gross_profit],
-                connector={"line":{"color":"rgb(63, 63, 63)"}},
+                connector={"line":{"color":"rgba(255, 255, 255, 0.5)", "width": 2}},
                 decreasing={"marker":{"color":"#e74c3c"}},
                 increasing={"marker":{"color":"#2ecc71"}},
-                totals={"marker":{"color":"#00b4d8"}}
+                totals={"marker":{"color": total_color}}
             ))
-            fig_waterfall.update_layout(title="Project Cost Breakdown against Revenue", waterfallgap=0.3)
+            
+            # 2. Layout Upgrades: Bigger text, taller chart, break-even line
+            fig_waterfall.update_traces(textfont_size=16) # Massive data labels
+            
+            fig_waterfall.update_layout(
+                title={"text": "<b>Project Cost Breakdown against Revenue</b>", "font": {"size": 22}},
+                waterfallgap=0.3,
+                height=650, # Made the chart taller to fit large labels
+                xaxis=dict(
+                    tickfont=dict(size=16, family="Arial Black") # Bold, large X-axis
+                ),
+                yaxis=dict(
+                    tickfont=dict(size=14),
+                    zeroline=True, 
+                    zerolinewidth=3, 
+                    zerolinecolor='rgba(255,255,255,0.7)' # Thick Break-Even Zero Line
+                ),
+                plot_bgcolor='rgba(0,0,0,0)', # Clean transparent background
+                paper_bgcolor='rgba(0,0,0,0)'
+            )
             st.plotly_chart(fig_waterfall, use_container_width=True)
         else:
             st.info("Upload the 'Project Billing/Budget' CSV to generate the Financial Waterfall Chart.")
