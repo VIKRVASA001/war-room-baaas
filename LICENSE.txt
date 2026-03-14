@@ -1,0 +1,12 @@
+Copyright (c) 2026 [Vikram Mohite]
+All Rights Reserved.
+
+PROPRIETARY AND CONFIDENTIAL
+
+This software, including but not limited to its source code, documentation, and user interface (collectively, the "Software"), is the proprietary property of [Vikram Mohite].
+
+1. You may NOT use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software without explicit, prior written permission from the copyright owner.
+2. The Software is provided for demonstration and authorized client-use purposes only, strictly under the terms of a separate, signed Service Level Agreement (SLA) or Contract.
+3. Unauthorized reproduction or distribution of this Software, or any portion of it, may result in severe civil and criminal penalties, and will be prosecuted to the maximum extent possible under the law.
+
+For licensing inquiries, contact: [vikramvm2978@gmail.com]

@@ -1,0 +1,5 @@
+date,project_id,material_type,qty_actual,qty_estimated,unit_rate
+2026-03-15,Palais Royale,Cement,550,500,350
+2026-03-15,Palais Royale,Steel,105,100,55000
+2026-03-15,Godrej Pune,Bricks,10000,10000,8
+2026-03-15,Godrej Pune,Fuel,420,400,95

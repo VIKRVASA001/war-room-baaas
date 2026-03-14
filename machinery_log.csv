@@ -1,0 +1,5 @@
+date,project_id,machine_type,working_hours,idle_hours
+2026-03-15,Palais Royale,Tower Crane,6,4
+2026-03-15,Palais Royale,JCB,8,0
+2026-03-15,Godrej Pune,Generator,4,6
+2026-03-15,Godrej Pune,RMC Pump,5,3
